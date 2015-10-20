@@ -8,6 +8,7 @@ class Cbench < Trema::Controller
     send_flow_mod_add(
       datapath_id,
       match: ExactMatch.new(message),
+      #match: Match.new(in_port: message.in_port),
       buffer_id: message.buffer_id,
       actions: SendOutPort.new(message.in_port + 1)
     )
